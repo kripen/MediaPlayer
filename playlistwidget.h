@@ -16,7 +16,6 @@ private:
     PlayList* playList;
 
     QTableView *tree;
-    QPushButton *addBtn;
 
 public slots:
     PlayList* getPlayList();

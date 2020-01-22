@@ -7,16 +7,19 @@
 #include <QDebug>
 
 PlayListWidget::PlayListWidget(QWidget *parent) : QWidget(parent),
-    playList(new PlayList()), tree(new QTableView()), addBtn(new QPushButton("add"))
+    playList(new PlayList()), tree(new QTableView())
 {
-    tree->setModel(new PlayListModel());
+    //model
+    PlayListModel *model = new PlayListModel();
+    model->setPlayList(playList);
+    tree->setModel(model);
 
+    //geometry
     setFixedSize(300, 300);
 
-    //widget
+    //layout
     QVBoxLayout* layout = new QVBoxLayout();
     layout->addWidget(tree);
-    layout->addWidget(addBtn);
 
     this->setLayout(layout);
 

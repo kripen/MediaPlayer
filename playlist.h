@@ -10,7 +10,9 @@ class PlayList
 public:
     PlayList();
     void addFile(QString path);
-    QString currentFile();
+    QString file(int index) const;
+    QString currentFile() const;
+    int size() const;
 };
 
 #endif // PLAYLIST_H

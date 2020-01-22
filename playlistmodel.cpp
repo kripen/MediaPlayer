@@ -1,20 +1,28 @@
 #include "playlistmodel.h"
+#include "playlist.h"
+#include <QDebug>
 
-PlayListModel::PlayListModel(QObject *parent) : QAbstractTableModel(parent), table(0,1)
+PlayListModel::PlayListModel(QObject *parent) : QAbstractTableModel(parent)
 {
 }
 
+void PlayListModel::setPlayList(PlayList *playList) {
+    this->playList = playList;
+}
+
 int PlayListModel::rowCount(const QModelIndex &parent) const {
-   return table.getHeight();
+    return playList->size();
 }
 
 int PlayListModel::columnCount(const QModelIndex &parent) const {
-    return table.getWidth();
+    return 1;
 }
 
 QVariant PlayListModel::data(const QModelIndex &index, int role) const {
     if(!(role == Qt::DisplayRole))
         return QVariant();
 
-    return QVariant(table.ref(index.row(), index.column()));
+    qDebug() << "called";
+    return QVariant(playList->file(index.row()));
+
 }
