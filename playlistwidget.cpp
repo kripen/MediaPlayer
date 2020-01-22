@@ -31,7 +31,7 @@ PlayList *PlayListWidget::getPlayList() {
 
 void PlayListWidget::addContent(QList<QString> fileList) {
     for(const auto &file : fileList) {
-       playList->addFile(file);
+       //playList->addFile(file); TODO:modelに通知する
     }
 
 }
